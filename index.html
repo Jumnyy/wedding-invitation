@@ -1,0 +1,824 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>
+      Thiệp Cưới Online - Nguyễn Tấn Tài & Trần Minh Châu | 14.11.2026
+    </title>
+
+    <!-- Meta tags for social media sharing -->
+    <meta
+      property="og:title"
+      content="Thiệp Cưới Online - Nguyễn Tấn Tài & Trần Minh Châu"
+    />
+    <meta
+      property="og:description"
+      content="Trân trọng kính mời quý khách đến tham dự Lễ Thành Hôn và Tiệc Rượu chung vui vào ngày 14/11/2026"
+    />
+    <meta
+      property="og:image"
+      content="https://lh3.googleusercontent.com/d/1X0rN7-H3v5a5vJ0v8k_L5v7p-J4z8k9e=w800"
+    />
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts for Calligraphy and Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;600;700;800&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- FontAwesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Custom Style Sheet -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+
+    <!-- Tailwind Configuration -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              weddingRed: {
+                800: "#8c0f1a",
+                900: "#7A0C16", // Wine Red matching original invite
+                950: "#58080f",
+              },
+              gold: {
+                300: "#f9e496",
+                400: "#e5c158",
+                500: "#D4AF37",
+                600: "#aa820a",
+              },
+              cream: "#FDFBF7",
+            },
+            fontFamily: {
+              script: ['"Alex Brush"', "cursive"],
+              vibes: ['"Great Vibes"', "cursive"],
+              cinzel: ['"Cinzel"', "serif"],
+              playfair: ['"Playfair Display"', "serif"],
+              sans: ['"Montserrat"', "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="relative min-h-screen">
+    <!-- Falling Petals Interactive Effect Canvas -->
+    <canvas id="petals-canvas"></canvas>
+
+    <!-- Background Music Player -->
+    <audio id="weddingAudio" loop preload="auto">
+      <source src="assets/audio/wedding.mp3" type="audio/mpeg" />
+    </audio>
+    <!-- Floating Audio Control Button -->
+    <div class="fixed top-4 right-4 z-50">
+      <button
+        id="floatingAudioDisc"
+        class="w-12 h-12 rounded-full bg-weddingRed-900 border-2 border-gold-400 text-gold-300 flex items-center justify-center shadow-2xl relative overflow-hidden focus:outline-none hover:scale-105 transition-transform"
+      >
+        <div
+          id="discWrapper"
+          class="w-full h-full flex items-center justify-center"
+        >
+          <i class="fa-solid fa-compact-disc text-2xl"></i>
+        </div>
+      </button>
+    </div>
+
+    <!-- ENVELOPE / INTERACTIVE COVER OVERLAY -->
+    <div
+      id="envelopeOverlay"
+      class="fixed inset-0 z-50 bg-weddingRed-950 flex flex-col items-center justify-center p-4 text-center select-none overflow-hidden"
+    >
+      <div
+        class="relative max-w-sm w-full bg-weddingRed-900 border-2 border-gold-400 p-6 rounded-2xl shadow-2xl text-white flex flex-col items-center"
+      >
+        <!-- Envelope Flap Header -->
+        <div class="text-center mb-2">
+          <p class="font-vibes text-2xl text-gold-300 transform -rotate-6">
+            Thank You
+          </p>
+        </div>
+
+        <div
+          class="border border-gold-400/40 p-6 rounded-xl w-full flex flex-col items-center bg-weddingRed-900/90 relative"
+        >
+          <p
+            class="font-cinzel text-xs tracking-[0.3em] text-gold-300 uppercase mb-2"
+          >
+            SAVE THE DATE
+          </p>
+          <h1
+            class="font-cinzel text-3xl font-extrabold text-white tracking-widest my-1"
+          >
+            14.11.2026
+          </h1>
+
+          <div class="w-16 h-[1px] bg-gold-400 my-3"></div>
+
+          <p class="font-vibes text-4xl text-gold-300 my-1">
+            Tấn Tài & Minh Châu
+          </p>
+
+          <!-- Guest Name Input Box -->
+          <div class="mt-6 mb-6 w-full">
+            <p
+              class="font-cinzel text-[11px] uppercase tracking-widest text-gold-300/90 mb-2"
+            >
+              TRÂN TRỌNG KÍNH MỜI:
+            </p>
+            <div
+              class="bg-white/95 border border-gold-400 py-2.5 px-4 rounded-full text-weddingRed-900 text-sm font-semibold shadow-inner min-h-[42px] flex items-center justify-center"
+            >
+              <span id="curtainGuestName">Quý Khách & Gia Đình</span>
+            </div>
+          </div>
+
+          <!-- Open Invitation Button -->
+          <button
+            id="btnOpenInvitation"
+            class="w-full py-3.5 px-6 rounded-full gold-gradient-bg text-weddingRed-950 font-bold uppercase tracking-wider text-xs shadow-xl hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-2"
+          >
+            <i class="fa-envelope-open-text text-base"></i>
+            <span>Mở Thiệp Cưới</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAIN invitation WRAPPER -->
+    <main
+      class="max-w-md mx-auto relative bg-cream min-h-screen shadow-2xl border-x border-gold-500/20 pb-16"
+    >
+      <!-- CARD 1: THIỆP BÁO TIN & LỄ THÀNH HÔN (IMAGE 1137e1 MATCH) -->
+      <section class="p-4 pt-6">
+        <div
+          class="card-wedding-red rounded-xl p-6 relative border border-gold-400/50 text-center"
+        >
+          <!-- PARENTS INFORMATION GRID -->
+          <div
+            class="grid grid-cols-2 gap-4 text-xs leading-relaxed pb-4 border-b border-white/20"
+          >
+            <!-- Groom's Parents -->
+            <div class="text-center">
+              <p
+                class="font-cinzel font-bold text-gold-300 mb-1.5 tracking-widest text-[11px]"
+              >
+                NHÀ TRAI
+              </p>
+              <p class="font-playfair font-bold text-white text-[14px]">
+                Ông: Trần Văn Dũng
+              </p>
+              <p class="font-playfair font-bold text-white text-[14px] mb-1.5">
+                Bà: Trần Thị Kim Lương
+              </p>
+              <p class="font-sans text-[11px] text-stone-200 leading-tight">
+                Số 270, T. Bình Tân,<br />X. Sông Lũy, T. Lâm Đồng
+              </p>
+            </div>
+
+            <!-- Bride's Parents -->
+            <div class="text-center">
+              <p
+                class="font-cinzel font-bold text-gold-300 mb-1.5 tracking-widest text-[11px]"
+              >
+                NHÀ GÁI
+              </p>
+              <p class="font-playfair font-bold text-white text-[14px]">
+                Ông: Trần Công Chứng
+              </p>
+              <p class="font-playfair font-bold text-white text-[14px] mb-1.5">
+                Bà: Bùi Thị Bạch Huệ
+              </p>
+              <p class="font-sans text-[11px] text-stone-200 leading-tight">
+                Phước Thiện 2,<br />X. Phước Hậu, T. Khánh Hòa
+              </p>
+            </div>
+          </div>
+
+          <!-- ANNOUNCEMENT HEADER -->
+          <div class="my-5">
+            <p
+              class="font-cinzel text-[11px] tracking-[0.2em] text-gold-300 font-medium"
+            >
+              TRÂN TRỌNG BÁO TIN
+            </p>
+            <p
+              class="font-playfair text-xs font-bold tracking-wide text-white mt-1 uppercase"
+            >
+              Lễ Thành Hôn Của Hai Con Chúng Tôi
+            </p>
+          </div>
+
+          <!-- COUPLE NAMES -->
+          <div class="my-4 space-y-1">
+            <h2
+              class="font-vibes text-5xl text-gold-300 font-normal drop-shadow-md py-1"
+            >
+              Nguyễn Tấn Tài
+            </h2>
+
+            <div
+              class="flex items-center justify-center gap-6 my-2 text-xs text-gold-300 font-sans"
+            >
+              <span class="font-medium">Trưởng Nam</span>
+              <div
+                class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white"
+              >
+                <i class="fa-solid fa-heart text-sm text-gold-300"></i>
+              </div>
+              <span class="font-medium">Út Nữ</span>
+            </div>
+
+            <h2
+              class="font-vibes text-5xl text-gold-300 font-normal drop-shadow-md py-1"
+            >
+              Trần Minh Châu
+            </h2>
+          </div>
+
+          <div
+            class="w-2/3 h-[1px] bg-white/30 mx-auto my-4 border-dashed border-t"
+          ></div>
+
+          <!-- WEDDING CEREMONY DETAILS -->
+          <div class="my-4">
+            <p
+              class="font-playfair text-xs font-medium tracking-wide text-stone-200"
+            >
+              HÔN LỄ ĐƯỢC CỬ HÀNH TẠI TƯ GIA
+            </p>
+            <p class="font-playfair text-xs font-bold text-gold-300 mt-1">
+              VÀO LÚC: 09H30 - THỨ BẢY
+            </p>
+
+            <!-- BIG DATE DISPLAY -->
+            <div
+              class="font-cinzel text-3xl font-extrabold tracking-widest text-white my-2 flex justify-center items-center gap-2"
+            >
+              <span>14</span>
+              <span class="text-gold-400 font-light">|</span>
+              <span>11</span>
+              <span class="text-gold-400 font-light">|</span>
+              <span>2026</span>
+            </div>
+
+            <p class="font-sans text-[11px] text-stone-200 italic">
+              (Nhằm ngày 06 tháng 10 năm Bính Ngọ)
+            </p>
+          </div>
+
+          <!-- Add Calendar Button -->
+          <a
+            href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=L%E1%BB%85+Th%C0%A0nh+H%C0%B4n+T%E1%BA%A5n+T%C0%A0i+%26+Minh+Ch%C0%A2u&dates=20261114T023000Z/20261114T050000Z&details=H%C3%B4n+l%E1%BB%85+c%E1%BB%AD+h%C3%A0nh+t%E1%BA%A1i+T%C6%B0+Gia&location=S%E1%BB%91+270,+T.+B%C3%ACnh+T%C3%A2n,+X.+S%C3%B4ng+L%C3%A9y,+T.+L%C3%A2m+%C4%90%E1%BB%93ng"
+            target="_blank"
+            class="mt-4 inline-flex items-center gap-2 text-[11px] font-semibold text-weddingRed-900 bg-gold-300 hover:bg-gold-400 px-4 py-2 rounded-full transition shadow-md"
+          >
+            <i class="fa-regular fa-calendar-plus"></i>
+            <span>Thêm Vào Google Lịch</span>
+          </a>
+        </div>
+      </section>
+      <!-- PHOTO SECTION: COUPLE WEDDING PHOTO (IMAGE 11381c MATCH) -->
+      <section class="p-4 pt-2">
+        <div
+          class="relative rounded-xl overflow-hidden border-2 border-gold-400 shadow-2xl group"
+        >
+          <img
+            src="assets/images/anhcuoi.jpg"
+            alt="Chú rể Nguyễn Tấn Tài & Cô dâu Trần Minh Châu"
+            class="w-full h-auto object-cover transform group-hover:scale-105 transition duration-700"
+          />
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end justify-center p-4"
+          >
+            <p class="font-vibes text-3xl text-gold-300 drop-shadow-md">
+              Tấn Tài & Minh Châu
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CARD 2: TIỆC RƯỢU & LỊCH THÁNG 11 (IMAGE 11383e MATCH) -->
+      <section class="p-4 pt-2">
+        <div
+          class="card-wedding-white rounded-xl p-6 relative border border-gold-400/40 text-center"
+        >
+          <p
+            class="font-cinzel text-xs font-bold tracking-widest text-weddingRed-900 uppercase"
+          >
+            TRÂN TRỌNG KÍNH MỜI
+          </p>
+
+          <div
+            class="w-1/2 h-[1px] bg-stone-300 mx-auto my-3 border-dashed border-t"
+          ></div>
+
+          <p
+            class="font-cinzel text-xs font-semibold text-stone-700 leading-relaxed uppercase"
+          >
+            ĐẾN DỰ BUỔI TIỆC RƯỢU CHUNG VUI<br />CÙNG GIA ĐÌNH CHÚNG TÔI TẠI
+          </p>
+
+          <h3 class="font-script text-5xl text-weddingRed-900 font-bold my-3">
+            Nhà hàng Rio
+          </h3>
+
+          <p
+            class="text-xs font-semibold text-stone-800 leading-tight uppercase px-2 mb-4"
+          >
+            QL 1A, THÔN TÂN BÌNH, XÃ SÔNG LŨY, TỈNH LÂM ĐỒNG
+          </p>
+
+          <!-- Date & Time Box -->
+          <div class="my-4 text-weddingRed-900">
+            <p class="font-cinzel text-xs font-bold uppercase">
+              VÀO LÚC : 11H00 - THỨ BẢY
+            </p>
+            <p
+              class="font-cinzel text-xl font-black uppercase tracking-wider my-1"
+            >
+              NGÀY 14 THÁNG 11 NĂM 2026
+            </p>
+            <p class="text-[11px] text-stone-600 italic">
+              (NHẰM NGÀY 06 THÁNG 10 NĂM BÍNH NGỌ)
+            </p>
+          </div>
+
+          <p
+            class="font-cinzel text-[11px] font-semibold text-stone-700 my-4 leading-relaxed"
+          >
+            SỰ HIỆN DIỆN CỦA QUÝ KHÁCH<br />LÀ NIỀM VINH HẠNH CHO GIA ĐÌNH CHÚNG
+            TÔI
+          </p>
+
+          <p class="font-cinzel text-xs font-bold text-weddingRed-900 mb-4">
+            KÍNH MỜI !
+          </p>
+
+          <!-- Time schedule pills -->
+          <div
+            class="flex justify-center items-center gap-6 my-4 py-2 border-y border-stone-200 text-xs font-bold text-stone-800"
+          >
+            <div>
+              ĐÓN KHÁCH
+              <span class="text-weddingRed-900 font-extrabold ml-1">11:00</span>
+            </div>
+            <div class="w-[1px] h-4 bg-stone-300"></div>
+            <div>
+              KHAI TIỆC
+              <span class="text-weddingRed-900 font-extrabold ml-1">11:30</span>
+            </div>
+          </div>
+
+          <!-- Map Navigation Button -->
+          <a
+            href="https://maps.google.com/?q=Nha+Hang+Rio+QL1A+Tan+Binh+Song+Luy+Lam+Dong"
+            target="_blank"
+            class="inline-flex items-center gap-2 text-xs font-semibold text-white bg-weddingRed-900 hover:bg-weddingRed-800 px-5 py-2.5 rounded-full shadow-md transition my-2"
+          >
+            <i class="fa-solid fa-location-dot text-gold-300"></i>
+            <span>Chỉ Đường Đến Nhà Hàng Rio</span>
+          </a>
+
+          <!-- CALENDAR NOVEMBER 2026 MATCHING IMAGE 11383e -->
+          <div class="mt-6 pt-4 border-t border-stone-200">
+            <p class="font-script text-2xl text-weddingRed-900 font-bold mb-3">
+              Tháng 11 - 2026
+            </p>
+
+            <div class="grid grid-cols-7 gap-1 text-center text-xs font-sans">
+              <div class="font-bold text-stone-900 pb-1">T2</div>
+              <div class="font-bold text-stone-900 pb-1">T3</div>
+              <div class="font-bold text-stone-900 pb-1">T4</div>
+              <div class="font-bold text-stone-900 pb-1">T5</div>
+              <div class="font-bold text-stone-900 pb-1">T6</div>
+              <div class="font-bold text-stone-900 pb-1">T7</div>
+              <div class="font-bold text-stone-900 pb-1">CN</div>
+
+              <!-- Calendar Days Grid (Nov 2026 starts on Sun) -->
+              <div class="py-1 text-stone-300"></div>
+              <div class="py-1 text-stone-300"></div>
+              <div class="py-1 text-stone-300"></div>
+              <div class="py-1 text-stone-300"></div>
+              <div class="py-1 text-stone-300"></div>
+              <div class="py-1 text-stone-300"></div>
+              <div class="py-1 text-stone-700">01</div>
+
+              <div class="py-1 text-stone-700">02</div>
+              <div class="py-1 text-stone-700">03</div>
+              <div class="py-1 text-stone-700">04</div>
+              <div class="py-1 text-stone-700">05</div>
+              <div class="py-1 text-stone-700">06</div>
+              <div class="py-1 text-stone-700">07</div>
+              <div class="py-1 text-stone-700">08</div>
+
+              <div class="py-1 text-stone-700">09</div>
+              <div class="py-1 text-stone-700">10</div>
+              <div class="py-1 text-stone-700">11</div>
+              <div class="py-1 text-stone-700">12</div>
+              <div class="py-1 text-stone-700">13</div>
+
+              <!-- HEART HIGHLIGHT DAY 14 -->
+              <div class="py-0.5 flex items-center justify-center">
+                <span
+                  class="w-7 h-7 rounded-full bg-weddingRed-900 text-white font-bold flex items-center justify-center relative text-xs shadow"
+                >
+                  14
+                  <i
+                    class="fa-solid fa-heart text-[8px] text-red-400 absolute -top-1 -right-1"
+                  ></i>
+                </span>
+              </div>
+
+              <div class="py-1 text-stone-700">15</div>
+
+              <div class="py-1 text-stone-700">16</div>
+              <div class="py-1 text-stone-700">17</div>
+              <div class="py-1 text-stone-700">18</div>
+              <div class="py-1 text-stone-700">19</div>
+              <div class="py-1 text-stone-700">20</div>
+              <div class="py-1 text-stone-700">21</div>
+              <div class="py-1 text-stone-700">22</div>
+
+              <div class="py-1 text-stone-700">23</div>
+              <div class="py-1 text-stone-700">24</div>
+              <div class="py-1 text-stone-700">25</div>
+              <div class="py-1 text-stone-700">26</div>
+              <div class="py-1 text-stone-700">27</div>
+              <div class="py-1 text-stone-700">28</div>
+              <div class="py-1 text-stone-700">29</div>
+              <div class="py-1 text-stone-700">30</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- COUNTDOWN TIMER SECTION -->
+      <section class="p-4 pt-2">
+        <div
+          class="card-wedding-red rounded-xl p-5 text-center border border-gold-400/50"
+        >
+          <p
+            class="font-cinzel text-xs tracking-widest text-gold-300 uppercase mb-3"
+          >
+            ĐẾM NGƯỢC ĐẾN NGÀY VUI
+          </p>
+          <div id="countdownTimer" class="grid grid-cols-4 gap-2 text-center">
+            <div class="bg-black/30 p-2 rounded-lg border border-gold-400/30">
+              <span
+                id="cdDays"
+                class="block font-cinzel text-2xl font-bold text-white"
+                >00</span
+              >
+              <span class="text-[10px] text-gold-300 uppercase">Ngày</span>
+            </div>
+            <div class="bg-black/30 p-2 rounded-lg border border-gold-400/30">
+              <span
+                id="cdHours"
+                class="block font-cinzel text-2xl font-bold text-white"
+                >00</span
+              >
+              <span class="text-[10px] text-gold-300 uppercase">Giờ</span>
+            </div>
+            <div class="bg-black/30 p-2 rounded-lg border border-gold-400/30">
+              <span
+                id="cdMins"
+                class="block font-cinzel text-2xl font-bold text-white"
+                >00</span
+              >
+              <span class="text-[10px] text-gold-300 uppercase">Phút</span>
+            </div>
+            <div class="bg-black/30 p-2 rounded-lg border border-gold-400/30">
+              <span
+                id="cdSecs"
+                class="block font-cinzel text-2xl font-bold text-white"
+                >00</span
+              >
+              <span class="text-[10px] text-gold-300 uppercase">Giây</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- RSVP ATTENDANCE FORM -->
+      <section class="p-4 pt-2">
+        <div
+          class="card-wedding-white rounded-xl p-6 border border-gold-400/40"
+        >
+          <div class="text-center mb-5">
+            <i
+              class="fa-solid fa-envelope-open-text text-3xl text-weddingRed-900 mb-2"
+            ></i>
+            <h3 class="font-cinzel text-lg font-bold text-weddingRed-900">
+              XÁC NHẬN THAM DỰ
+            </h3>
+            <p class="text-xs text-stone-600 mt-1">
+              Xin vui lòng phản hồi để gia đình chuẩn bị đón tiếp chu đáo nhất!
+            </p>
+          </div>
+
+          <form id="rsvpForm" class="space-y-4">
+            <div>
+              <label
+                class="block text-xs font-semibold text-stone-700 uppercase mb-1"
+                >Họ và Tên Quý Khách</label
+              >
+              <input
+                type="text"
+                id="rsvpName"
+                required
+                placeholder="Nhập tên của bạn..."
+                class="w-full px-4 py-2.5 rounded-xl border border-stone-300 focus:outline-none focus:border-weddingRed-900 text-sm bg-stone-50"
+              />
+            </div>
+
+            <div>
+              <label
+                class="block text-xs font-semibold text-stone-700 uppercase mb-1"
+                >Bạn là khách của</label
+              >
+              <select
+                id="rsvpGuestOf"
+                class="w-full px-4 py-2.5 rounded-xl border border-stone-300 focus:outline-none focus:border-weddingRed-900 text-sm bg-stone-50"
+              >
+                <option value="Nhà Trai (Tấn Tài)">
+                  Nhà Trai (Chú rể Tấn Tài)
+                </option>
+                <option value="Nhà Gái (Minh Châu)">
+                  Nhà Gái (Cô dâu Minh Châu)
+                </option>
+              </select>
+            </div>
+
+            <div>
+              <label
+                class="block text-xs font-semibold text-stone-700 uppercase mb-1"
+                >Xác Nhận Tham Dự</label
+              >
+              <div class="grid grid-cols-2 gap-2">
+                <label
+                  class="border border-stone-300 rounded-xl p-3 flex items-center gap-2 cursor-pointer bg-stone-50 hover:bg-stone-100"
+                >
+                  <input
+                    type="radio"
+                    name="attendance"
+                    value="Sẽ Tham Dự"
+                    checked
+                    class="accent-weddingRed-900"
+                  />
+                  <span class="text-xs font-medium text-stone-800"
+                    >Sẽ Tham Dự</span
+                  >
+                </label>
+                <label
+                  class="border border-stone-300 rounded-xl p-3 flex items-center gap-2 cursor-pointer bg-stone-50 hover:bg-stone-100"
+                >
+                  <input
+                    type="radio"
+                    name="attendance"
+                    value="Rất Tiếc Vắng Mặt"
+                    class="accent-weddingRed-900"
+                  />
+                  <span class="text-xs font-medium text-stone-800"
+                    >Rất Tiếc Vắng Mặt</span
+                  >
+                </label>
+              </div>
+            </div>
+
+            <div>
+              <label
+                class="block text-xs font-semibold text-stone-700 uppercase mb-1"
+                >Lời Chúc Cho Đôi Bạn Trẻ</label
+              >
+              <textarea
+                id="rsvpMessage"
+                rows="3"
+                placeholder="Gửi lời chúc mừng tới Tấn Tài & Minh Châu..."
+                class="w-full px-4 py-2.5 rounded-xl border border-stone-300 focus:outline-none focus:border-weddingRed-900 text-sm bg-stone-50"
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              class="w-full py-3.5 rounded-xl bg-weddingRed-900 hover:bg-weddingRed-800 text-gold-300 font-bold uppercase tracking-wider text-xs shadow-lg active:scale-95 transition"
+            >
+              Gửi Phản Hồi
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <!-- WISHES BOARD -->
+      <section class="p-4 pt-2">
+        <div
+          class="card-wedding-white rounded-xl p-5 border border-gold-400/40"
+        >
+          <h4
+            class="font-cinzel font-bold text-base text-weddingRed-900 text-center mb-4"
+          >
+            <i class="fa-solid fa-heart text-weddingRed-900 mr-2"></i>Lời Chúc
+            Yêu Thương
+          </h4>
+
+          <div id="wishesList" class="space-y-3 max-h-56 overflow-y-auto pr-1">
+            <div
+              class="bg-stone-50 p-3 rounded-xl border border-stone-200 text-xs"
+            >
+              <p class="font-bold text-weddingRed-900">
+                Gia đình Bác Dũng
+                <span class="text-[10px] text-stone-400 font-normal"
+                  >(Nhà Trai)</span
+                >
+              </p>
+              <p class="text-stone-700 mt-1">
+                Chúc hai cháu Tấn Tài & Minh Châu trăm năm hạnh phúc, răng long
+                đầu bạc, vạn sự như ý!
+              </p>
+            </div>
+            <div
+              class="bg-stone-50 p-3 rounded-xl border border-stone-200 text-xs"
+            >
+              <p class="font-bold text-weddingRed-900">
+                Bạn Thân
+                <span class="text-[10px] text-stone-400 font-normal"
+                  >(Nhà Gái)</span
+                >
+              </p>
+              <p class="text-stone-700 mt-1">
+                Chúc mừng Minh Châu và Tấn Tài! Hẹn gặp hai bạn ở Nhà hàng Rio
+                ngày 14/11 nhé!
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- MỪNG TUỔI CƯỚI / LỜI CHÚC & HỘP MỪNG CƯỚI -->
+      <section class="p-4 py-6">
+        <div
+          class="card-wedding-red rounded-xl p-6 relative border border-gold-400/50 text-center"
+        >
+          <!-- Tiêu đề -->
+          <div class="mb-6">
+            <div
+              class="w-10 h-10 mx-auto mb-2 rounded-full bg-gold-500/20 flex items-center justify-center text-gold-300"
+            >
+              <i class="fa-solid fa-gift text-xl"></i>
+            </div>
+            <h2
+              class="font-cinzel text-lg font-bold text-gold-300 tracking-wider"
+            >
+              HỘP MỪNG CƯỚI
+            </h2>
+            <p class="font-sans text-xs text-stone-200 mt-1 italic">
+              Sự hiện diện và lời chúc phúc của quý khách là món quà vô giá nhất
+              đối với chúng tôi. Nếu ở xa không thể tham dự, quý khách có thể
+              gửi yêu thương qua đây:
+            </p>
+          </div>
+
+          <!-- Danh sách QR & STK (2 Bên: Nhà Trai & Nhà Gái) -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- QR/STK CHÚ RỂ -->
+            <div
+              class="bg-black/20 rounded-lg p-4 border border-gold-400/30 flex flex-col items-center"
+            >
+              <span
+                class="font-cinzel text-xs font-bold text-gold-300 tracking-wider uppercase mb-2"
+              >
+                Mừng Cưới Đến Chú Rể
+              </span>
+
+              <!-- Ảnh QR Code Chú Rể -->
+              <div class="p-2 bg-white rounded-lg shadow-md mb-3">
+                <img
+                  src="assets/images/qr-chu-re.jpg"
+                  alt="Mã QR Mừng Cưới Chú Rể"
+                  class="w-40 h-40 object-contain rounded"
+                  onerror="
+                    this.src =
+                      'https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=NGUYEN%20TAN%20TAI'
+                  "
+                />
+              </div>
+
+              <div class="text-xs space-y-1 font-sans">
+                <p class="font-semibold text-white">
+                  Ngân hàng: <span class="text-gold-300">MB Bank</span>
+                </p>
+                <p class="font-semibold text-white">
+                  STK:
+                  <span class="text-gold-300 font-mono text-sm"
+                    >0333XXXXXX</span
+                  >
+                </p>
+                <p class="font-semibold text-white">
+                  Chủ TK:
+                  <span class="uppercase text-gold-300">NGUYỄN TẤN TÀI</span>
+                </p>
+              </div>
+
+              <!-- Nút Sao Chép STK -->
+              <button
+                onclick="
+                  navigator.clipboard.writeText('0333XXXXXX');
+                  alert('Đã sao chép STK chú rể!');
+                "
+                class="mt-3 inline-flex items-center gap-1.5 text-[11px] font-medium bg-white/10 hover:bg-white/20 text-gold-300 px-3 py-1.5 rounded-full border border-gold-400/40 transition"
+              >
+                <i class="fa-regular fa-copy"></i>
+                <span>Sao chép STK</span>
+              </button>
+            </div>
+
+            <!-- QR/STK CÔ DÂU -->
+            <div
+              class="bg-black/20 rounded-lg p-4 border border-gold-400/30 flex flex-col items-center"
+            >
+              <span
+                class="font-cinzel text-xs font-bold text-gold-300 tracking-wider uppercase mb-2"
+              >
+                Mừng Cưới Đến Cô Dâu
+              </span>
+
+              <!-- Ảnh QR Code Cô Dâu -->
+              <div class="p-2 bg-white rounded-lg shadow-md mb-3">
+                <img
+                  src="assets/images/qr-co-dau.jpg"
+                  alt="Mã QR Mừng Cưới Cô Dâu"
+                  class="w-40 h-40 object-contain rounded"
+                  onerror="
+                    this.src =
+                      'https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=TRAN%20MINH%20CHAU'
+                  "
+                />
+              </div>
+
+              <div class="text-xs space-y-1 font-sans">
+                <p class="font-semibold text-white">
+                  Ngân hàng: <span class="text-gold-300">Vietcombank</span>
+                </p>
+                <p class="font-semibold text-white">
+                  STK:
+                  <span class="text-gold-300 font-mono text-sm"
+                    >101XXXXXXXX</span
+                  >
+                </p>
+                <p class="font-semibold text-white">
+                  Chủ TK:
+                  <span class="uppercase text-gold-300">TRẦN MINH CHÂU</span>
+                </p>
+              </div>
+
+              <!-- Nút Sao Chép STK -->
+              <button
+                onclick="
+                  navigator.clipboard.writeText('101XXXXXXXX');
+                  alert('Đã sao chép STK cô dâu!');
+                "
+                class="mt-3 inline-flex items-center gap-1.5 text-[11px] font-medium bg-white/10 hover:bg-white/20 text-gold-300 px-3 py-1.5 rounded-full border border-gold-400/40 transition"
+              >
+                <i class="fa-regular fa-copy"></i>
+                <span>Sao chép STK</span>
+              </button>
+            </div>
+          </div>
+
+          <p class="text-[11px] text-stone-300 mt-5 italic">
+            Chân thành cảm ơn tình cảm và những lời chúc tốt đẹp của toàn thể
+            quý khách!
+          </p>
+        </div>
+      </section>
+      <!-- FOOTER -->
+      <footer
+        class="p-6 bg-weddingRed-950 text-white text-center border-t-2 border-gold-400 mt-4"
+      >
+        <p class="font-vibes text-4xl text-gold-300">Tấn Tài & Minh Châu</p>
+        <p class="text-xs text-stone-300 uppercase tracking-widest mt-2">
+          Trân Trọng Cảm Ơn Quý Khách!
+        </p>
+        <p class="text-[10px] text-gold-400/60 mt-4">
+          © 2026 Wedding Invitation
+        </p>
+      </footer>
+    </main>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

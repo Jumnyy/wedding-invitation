@@ -1,0 +1,119 @@
+body {
+    background-color: #58080f;
+    color: #2c2c2c;
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Custom Fonts */
+.font-script { 
+    font-family: 'Alex Brush', cursive; 
+}
+.font-vibes { 
+    font-family: 'Great Vibes', cursive; 
+}
+.font-cinzel { 
+    font-family: 'Cinzel', serif; 
+}
+.font-playfair { 
+    font-family: 'Playfair Display', serif; 
+}
+
+/* Smooth Envelope Opening Animation */
+#envelopeOverlay {
+    transition: transform 0.9s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease;
+}
+#envelopeOverlay.opened {
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Gold metallic text effect */
+.gold-gradient-text {
+    background: linear-gradient(135deg, #fff2a3 0%, #D4AF37 50%, #aa820a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.gold-gradient-bg {
+    background: linear-gradient(135deg, #f7e096 0%, #D4AF37 50%, #aa820a 100%);
+}
+
+/* Card Shadow and Borders */
+.card-wedding-red {
+    background-color: #7A0C16;
+    color: #ffffff;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+.card-wedding-white {
+    background-color: #ffffff;
+    color: #2c2c2c;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+/* Disc Animation */
+.disc-rotating {
+    animation: rotateDisc 12s linear infinite;
+}
+
+@keyframes rotateDisc {
+    from { 
+        transform: rotate(0deg); 
+    }
+    to { 
+        transform: rotate(360deg); 
+    }
+}
+
+/* Falling Heart Petals Canvas */
+#petals-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 40;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: #58080f;
+}
+::-webkit-scrollbar-thumb {
+    background: #D4AF37;
+    border-radius: 3px;
+}
+
+/* Toast Popup */
+.toast-notice {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: rgba(122, 12, 22, 0.95);
+    color: #fff;
+    border: 1px solid #D4AF37;
+    padding: 12px 24px;
+    border-radius: 9999px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    z-index: 100;
+    opacity: 0;
+    transition: all 0.4s ease;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.toast-notice.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
