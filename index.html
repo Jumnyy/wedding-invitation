@@ -81,7 +81,7 @@
 
     <!-- Background Music Player -->
     <audio id="weddingAudio" loop preload="auto">
-      <source src="assets/audio/wedding.mp3" type="audio/mpeg" />
+      <source src="assets/audio/vaycuoi.mp3" type="audio/mpeg" />
     </audio>
     <!-- Floating Audio Control Button -->
     <div class="fixed top-4 right-4 z-50">
@@ -311,7 +311,300 @@
           </div>
         </div>
       </section>
+      <!-- SECTION ALBUM ÁNH CƯỚI (GALLERY) -->
+      <!-- SECTION ALBUM ẢNH CƯỚI (HIỂN THỊ NGUYÊN BẢN - KHÔNG BỊ CẮT) -->
+      <!-- SECTION ALBUM ẢNH CƯỚI (BỰ, RÕ NÉT, KHÔNG BỊ CẮT) -->
+      <section class="p-3 py-6">
+        <div
+          class="card-wedding-red rounded-2xl p-4 md:p-8 relative border border-gold-400/50 text-center shadow-2xl"
+        >
+          <!-- Tiêu đề Section -->
+          <div class="mb-6">
+            <p
+              class="font-cinzel text-xs text-gold-300 font-bold tracking-[0.25em] uppercase"
+            >
+              KHOẢNH KHẮC HẠNH PHÚC
+            </p>
+            <h2
+              class="font-vibes text-4xl md:text-5xl text-gold-300 font-normal mt-1 drop-shadow-md"
+            >
+              Album Ảnh Cưới
+            </h2>
+            <div
+              class="w-20 h-[1px] bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mt-2"
+            ></div>
+          </div>
 
+          <!-- Lưới Ảnh Bự Rõ (1 cột trên mobile, 2 cột trên màn hình lớn) -->
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 gap-5"
+            id="weddingGallery"
+          >
+            <!-- Ảnh 1 -->
+            <div
+              onclick="
+                openLightbox(
+                  'assets/images/anh_cuoi_1.jpg',
+                  'https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1200&q=80',
+                )
+              "
+              class="overflow-hidden rounded-xl border-2 border-gold-400/40 relative group cursor-pointer shadow-xl bg-black/30"
+            >
+              <img
+                src="assets/images/anh_cuoi_1.jpg"
+                alt="Ảnh cưới Nguyễn Tấn Tài & Trần Minh Châu"
+                class="w-full h-auto block transform group-hover:scale-102 transition duration-500 ease-out"
+                onerror="
+                  this.src =
+                    'https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1200&q=80'
+                "
+              />
+              <div
+                class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
+              >
+                <span
+                  class="px-4 py-2 rounded-full bg-gold-400/90 text-weddingRed-950 font-bold text-sm shadow-lg flex items-center gap-2"
+                >
+                  <i class="fa-solid fa-magnifying-glass-plus"></i> Xem ảnh lớn
+                </span>
+              </div>
+            </div>
+
+            <!-- Ảnh 2 -->
+            <div
+              onclick="
+                openLightbox(
+                  'assets/images/anh_cuoi_2.jpg',
+                  'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80',
+                )
+              "
+              class="overflow-hidden rounded-xl border-2 border-gold-400/40 relative group cursor-pointer shadow-xl bg-black/30"
+            >
+              <img
+                src="assets/images/anh_cuoi_2.jpg"
+                alt="Ảnh cưới Nguyễn Tấn Tài & Trần Minh Châu"
+                class="w-full h-auto block transform group-hover:scale-102 transition duration-500 ease-out"
+                onerror="
+                  this.src =
+                    'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80'
+                "
+              />
+              <div
+                class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
+              >
+                <span
+                  class="px-4 py-2 rounded-full bg-gold-400/90 text-weddingRed-950 font-bold text-sm shadow-lg flex items-center gap-2"
+                >
+                  <i class="fa-solid fa-magnifying-glass-plus"></i> Xem ảnh lớn
+                </span>
+              </div>
+            </div>
+
+            <!-- Ảnh 3 -->
+            <div
+              onclick="
+                openLightbox(
+                  'assets/images/anh_cuoi_3.jpg',
+                  'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200&q=80',
+                )
+              "
+              class="overflow-hidden rounded-xl border-2 border-gold-400/40 relative group cursor-pointer shadow-xl bg-black/30"
+            >
+              <img
+                src="assets/images/anh_cuoi_3.jpg"
+                alt="Ảnh cưới Nguyễn Tấn Tài & Trần Minh Châu"
+                class="w-full h-auto block transform group-hover:scale-102 transition duration-500 ease-out"
+                onerror="
+                  this.src =
+                    'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200&q=80'
+                "
+              />
+              <div
+                class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
+              >
+                <span
+                  class="px-4 py-2 rounded-full bg-gold-400/90 text-weddingRed-950 font-bold text-sm shadow-lg flex items-center gap-2"
+                >
+                  <i class="fa-solid fa-magnifying-glass-plus"></i> Xem ảnh lớn
+                </span>
+              </div>
+            </div>
+
+            <!-- Ảnh 4 -->
+            <div
+              onclick="
+                openLightbox(
+                  'assets/images/anh_cuoi_4.jpg',
+                  'https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=1200&q=80',
+                )
+              "
+              class="overflow-hidden rounded-xl border-2 border-gold-400/40 relative group cursor-pointer shadow-xl bg-black/30"
+            >
+              <img
+                src="assets/images/anh_cuoi_4.jpg"
+                alt="Ảnh cưới Nguyễn Tấn Tài & Trần Minh Châu"
+                class="w-full h-auto block transform group-hover:scale-102 transition duration-500 ease-out"
+                onerror="
+                  this.src =
+                    'https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=1200&q=80'
+                "
+              />
+              <div
+                class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
+              >
+                <span
+                  class="px-4 py-2 rounded-full bg-gold-400/90 text-weddingRed-950 font-bold text-sm shadow-lg flex items-center gap-2"
+                >
+                  <i class="fa-solid fa-magnifying-glass-plus"></i> Xem ảnh lớn
+                </span>
+              </div>
+            </div>
+
+            <!-- Ảnh 5 -->
+            <div
+              onclick="
+                openLightbox(
+                  'assets/images/anh_cuoi_5.jpg',
+                  'https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=1200&q=80',
+                )
+              "
+              class="overflow-hidden rounded-xl border-2 border-gold-400/40 relative group cursor-pointer shadow-xl bg-black/30"
+            >
+              <img
+                src="assets/images/anh_cuoi_5.jpg"
+                alt="Ảnh cưới Nguyễn Tấn Tài & Trần Minh Châu"
+                class="w-full h-auto block transform group-hover:scale-102 transition duration-500 ease-out"
+                onerror="
+                  this.src =
+                    'https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=1200&q=80'
+                "
+              />
+              <div
+                class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
+              >
+                <span
+                  class="px-4 py-2 rounded-full bg-gold-400/90 text-weddingRed-950 font-bold text-sm shadow-lg flex items-center gap-2"
+                >
+                  <i class="fa-solid fa-magnifying-glass-plus"></i> Xem ảnh lớn
+                </span>
+              </div>
+            </div>
+
+            <!-- Ảnh 6 -->
+            <div
+              onclick="
+                openLightbox(
+                  'assets/images/anh_cuoi_6.jpg',
+                  'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?auto=format&fit=crop&w=1200&q=80',
+                )
+              "
+              class="overflow-hidden rounded-xl border-2 border-gold-400/40 relative group cursor-pointer shadow-xl bg-black/30"
+            >
+              <img
+                src="assets/images/anh_cuoi_6.jpg"
+                alt="Ảnh cưới Nguyễn Tấn Tài & Trần Minh Châu"
+                class="w-full h-auto block transform group-hover:scale-102 transition duration-500 ease-out"
+                onerror="
+                  this.src =
+                    'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?auto=format&fit=crop&w=1200&q=80'
+                "
+              />
+              <div
+                class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
+              >
+                <span
+                  class="px-4 py-2 rounded-full bg-gold-400/90 text-weddingRed-950 font-bold text-sm shadow-lg flex items-center gap-2"
+                >
+                  <i class="fa-solid fa-magnifying-glass-plus"></i> Xem ảnh lớn
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MODAL LIGHTBOX (BẤM VÀO XEM FULL MÀN HÌNH CỰC RÕ) -->
+      <div
+        id="imageLightbox"
+        onclick="closeLightbox()"
+        class="fixed inset-0 z-50 bg-black/95 hidden items-center justify-center p-2 md:p-6 backdrop-blur-md transition-all duration-300"
+      >
+        <button
+          onclick="closeLightbox()"
+          class="absolute top-4 right-4 text-gold-300 text-3xl hover:text-white transition z-10 p-2"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <img
+          id="lightboxImg"
+          src=""
+          alt="Zoom Ảnh Cưới"
+          class="max-w-full max-h-[95vh] rounded-lg shadow-2xl object-contain border border-gold-400/50"
+        />
+      </div>
+
+      <!-- JAVASCRIPT ĐIỀU KHIỂN LIGHTBOX -->
+      <script>
+        function openLightbox(primarySrc, fallbackSrc) {
+          const lightbox = document.getElementById("imageLightbox");
+          const lightboxImg = document.getElementById("lightboxImg");
+
+          lightboxImg.src = primarySrc;
+          lightboxImg.onerror = function () {
+            this.src = fallbackSrc;
+          };
+
+          lightbox.classList.remove("hidden");
+          lightbox.classList.add("flex");
+        }
+
+        function closeLightbox() {
+          const lightbox = document.getElementById("imageLightbox");
+          lightbox.classList.remove("flex");
+          lightbox.classList.add("hidden");
+        }
+      </script>
+      <!-- MODAL LIGHTBOX (XEM ẢNH TRỌN VẸN FULL SCREEN) -->
+      <div
+        id="imageLightbox"
+        onclick="closeLightbox()"
+        class="fixed inset-0 z-50 bg-black/90 hidden items-center justify-center p-4 backdrop-blur-md transition-all duration-300"
+      >
+        <button
+          onclick="closeLightbox()"
+          class="absolute top-5 right-5 text-gold-300 text-3xl hover:text-white transition z-10"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <img
+          id="lightboxImg"
+          src=""
+          alt="Zoom Ảnh Cưới"
+          class="max-w-full max-h-[90vh] rounded-lg shadow-2xl object-contain border border-gold-400/40"
+        />
+      </div>
+
+      <!-- JAVASCRIPT ĐIỀU KHIỂN LIGHTBOX -->
+      <script>
+        function openLightbox(primarySrc, fallbackSrc) {
+          const lightbox = document.getElementById("imageLightbox");
+          const lightboxImg = document.getElementById("lightboxImg");
+
+          lightboxImg.src = primarySrc;
+          lightboxImg.onerror = function () {
+            this.src = fallbackSrc;
+          };
+
+          lightbox.classList.remove("hidden");
+          lightbox.classList.add("flex");
+        }
+
+        function closeLightbox() {
+          const lightbox = document.getElementById("imageLightbox");
+          lightbox.classList.remove("flex");
+          lightbox.classList.add("hidden");
+        }
+      </script>
       <!-- CARD 2: TIỆC RƯỢU & LỊCH THÁNG 11 (IMAGE 11383e MATCH) -->
       <section class="p-4 pt-2">
         <div
@@ -668,7 +961,20 @@
         </div>
       </section>
       <!-- MỪNG TUỔI CƯỚI / LỜI CHÚC & HỘP MỪNG CƯỚI -->
-      <section class="p-4 py-6">
+      <section class="p-4 py-6 relative">
+        <!-- Toast thông báo xịn xịn -->
+        <div
+          id="copyToast"
+          class="fixed top-5 left-1/2 -translate-x-1/2 z-50 opacity-0 pointer-events-none transition-all duration-300 transform -translate-y-4 bg-stone-900/95 text-gold-300 border border-gold-400/60 shadow-2xl rounded-full px-5 py-2.5 flex items-center gap-2 text-xs font-medium backdrop-blur-md"
+        >
+          <div
+            class="w-5 h-5 rounded-full bg-gold-500/20 flex items-center justify-center text-gold-300"
+          >
+            <i class="fa-solid fa-check text-[10px]"></i>
+          </div>
+          <span id="toastMsg">Đã sao chép số tài khoản!</span>
+        </div>
+
         <div
           class="card-wedding-red rounded-xl p-6 relative border border-gold-400/50 text-center"
         >
@@ -691,109 +997,65 @@
             </p>
           </div>
 
-          <!-- Danh sách QR & STK (2 Bên: Nhà Trai & Nhà Gái) -->
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <!-- QR/STK CHÚ RỂ -->
+          <!-- Khung QR & STK Chú Rể -->
+          <div
+            class="max-w-sm mx-auto bg-black/20 rounded-lg p-5 border border-gold-400/30 flex flex-col items-center"
+          >
+            <!-- Ảnh Mã QR -->
             <div
-              class="bg-black/20 rounded-lg p-4 border border-gold-400/30 flex flex-col items-center"
+              class="p-2 bg-white rounded-lg shadow-md w-full max-w-[220px] mb-4"
             >
-              <span
-                class="font-cinzel text-xs font-bold text-gold-300 tracking-wider uppercase mb-2"
-              >
-                Mừng Cưới Đến Chú Rể
-              </span>
-
-              <!-- Ảnh QR Code Chú Rể -->
-              <div class="p-2 bg-white rounded-lg shadow-md mb-3">
-                <img
-                  src="assets/images/qr-chu-re.jpg"
-                  alt="Mã QR Mừng Cưới Chú Rể"
-                  class="w-40 h-40 object-contain rounded"
-                  onerror="
-                    this.src =
-                      'https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=NGUYEN%20TAN%20TAI'
-                  "
-                />
-              </div>
-
-              <div class="text-xs space-y-1 font-sans">
-                <p class="font-semibold text-white">
-                  Ngân hàng: <span class="text-gold-300">MB Bank</span>
-                </p>
-                <p class="font-semibold text-white">
-                  STK:
-                  <span class="text-gold-300 font-mono text-sm"
-                    >0333XXXXXX</span
-                  >
-                </p>
-                <p class="font-semibold text-white">
-                  Chủ TK:
-                  <span class="uppercase text-gold-300">NGUYỄN TẤN TÀI</span>
-                </p>
-              </div>
-
-              <!-- Nút Sao Chép STK -->
-              <button
-                onclick="
-                  navigator.clipboard.writeText('0333XXXXXX');
-                  alert('Đã sao chép STK chú rể!');
+              <img
+                id="qrImage"
+                src="assets/images/QR_anhTai.jpg"
+                alt="Mã QR Mừng Cưới"
+                class="w-full h-auto object-contain rounded"
+                onerror="
+                  this.src =
+                    'https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=NGUYEN%20TAN%20TAI'
                 "
-                class="mt-3 inline-flex items-center gap-1.5 text-[11px] font-medium bg-white/10 hover:bg-white/20 text-gold-300 px-3 py-1.5 rounded-full border border-gold-400/40 transition"
-              >
-                <i class="fa-regular fa-copy"></i>
-                <span>Sao chép STK</span>
-              </button>
+              />
             </div>
 
-            <!-- QR/STK CÔ DÂU -->
-            <div
-              class="bg-black/20 rounded-lg p-4 border border-gold-400/30 flex flex-col items-center"
-            >
-              <span
-                class="font-cinzel text-xs font-bold text-gold-300 tracking-wider uppercase mb-2"
-              >
-                Mừng Cưới Đến Cô Dâu
-              </span>
+            <!-- Thông tin STK -->
+            <div class="text-xs space-y-1.5 font-sans mb-4 text-center">
+              <p class="font-semibold text-white">
+                Ngân hàng: <span class="text-gold-300">Vietcombank</span>
+              </p>
+              <p class="font-semibold text-white">
+                Số tài khoản:
+                <span class="text-gold-300 font-mono text-sm tracking-wide"
+                  >1020778848</span
+                >
+              </p>
+              <p class="font-semibold text-white">
+                Chủ tài khoản:
+                <span class="uppercase text-gold-300">NGUYỄN TẤN TÀI</span>
+              </p>
+            </div>
 
-              <!-- Ảnh QR Code Cô Dâu -->
-              <div class="p-2 bg-white rounded-lg shadow-md mb-3">
-                <img
-                  src="assets/images/qr-co-dau.jpg"
-                  alt="Mã QR Mừng Cưới Cô Dâu"
-                  class="w-40 h-40 object-contain rounded"
-                  onerror="
-                    this.src =
-                      'https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=TRAN%20MINH%20CHAU'
-                  "
-                />
-              </div>
-
-              <div class="text-xs space-y-1 font-sans">
-                <p class="font-semibold text-white">
-                  Ngân hàng: <span class="text-gold-300">Vietcombank</span>
-                </p>
-                <p class="font-semibold text-white">
-                  STK:
-                  <span class="text-gold-300 font-mono text-sm"
-                    >101XXXXXXXX</span
-                  >
-                </p>
-                <p class="font-semibold text-white">
-                  Chủ TK:
-                  <span class="uppercase text-gold-300">TRẦN MINH CHÂU</span>
-                </p>
-              </div>
-
-              <!-- Nút Sao Chép STK -->
+            <!-- 2 Nút Bấm: Sao chép STK & Lưu ảnh QR -->
+            <div class="flex flex-wrap justify-center gap-2 w-full">
+              <!-- Nút 1: Copy STK -->
               <button
-                onclick="
-                  navigator.clipboard.writeText('101XXXXXXXX');
-                  alert('Đã sao chép STK cô dâu!');
-                "
-                class="mt-3 inline-flex items-center gap-1.5 text-[11px] font-medium bg-white/10 hover:bg-white/20 text-gold-300 px-3 py-1.5 rounded-full border border-gold-400/40 transition"
+                id="copyBtn"
+                onclick="copySTK('1020778848')"
+                class="inline-flex items-center gap-1.5 text-[11px] font-medium bg-white/10 hover:bg-white/20 text-gold-300 px-3.5 py-2 rounded-full border border-gold-400/40 transition-all duration-300 active:scale-95"
               >
-                <i class="fa-regular fa-copy"></i>
-                <span>Sao chép STK</span>
+                <i
+                  class="fa-regular fa-copy transition-transform duration-300"
+                  id="copyIcon"
+                ></i>
+                <span id="copyText">Sao chép STK</span>
+              </button>
+
+              <!-- Nút 2: Tải/Lưu ảnh QR bằng JS chuẩn -->
+              <button
+                onclick="downloadQRImage()"
+                class="inline-flex items-center gap-1.5 text-[11px] font-medium bg-gold-500/20 hover:bg-gold-500/30 text-gold-300 px-3.5 py-2 rounded-full border border-gold-400/50 transition-all duration-300 active:scale-95"
+              >
+                <i class="fa-solid fa-download"></i>
+                <span>Lưu ảnh QR</span>
               </button>
             </div>
           </div>
@@ -804,6 +1066,82 @@
           </p>
         </div>
       </section>
+
+      <!-- Script xử lý Sao chép & Tải ảnh -->
+      <script>
+        // Hàm hiển thị Toast thông báo
+        function showToast(message) {
+          const toast = document.getElementById("copyToast");
+          const toastMsg = document.getElementById("toastMsg");
+          toastMsg.textContent = message;
+
+          toast.classList.remove(
+            "opacity-0",
+            "pointer-events-none",
+            "-translate-y-4",
+          );
+          toast.classList.add("opacity-100", "translate-y-0");
+
+          setTimeout(() => {
+            toast.classList.remove("opacity-100", "translate-y-0");
+            toast.classList.add(
+              "opacity-0",
+              "pointer-events-none",
+              "-translate-y-4",
+            );
+          }, 2500);
+        }
+
+        // 1. Hàm sao chép STK
+        function copySTK(stk) {
+          navigator.clipboard.writeText(stk).then(() => {
+            const btn = document.getElementById("copyBtn");
+            const icon = document.getElementById("copyIcon");
+            const text = document.getElementById("copyText");
+
+            icon.className = "fa-solid fa-check text-emerald-400 scale-125";
+            text.textContent = "Đã sao chép!";
+            text.className = "text-emerald-400 font-bold";
+            btn.classList.add("border-emerald-400/60", "bg-emerald-500/10");
+
+            showToast("Đã sao chép số tài khoản vào bộ nhớ tạm!");
+
+            setTimeout(() => {
+              icon.className = "fa-regular fa-copy";
+              text.textContent = "Sao chép STK";
+              text.className = "";
+              btn.classList.remove(
+                "border-emerald-400/60",
+                "bg-emerald-500/10",
+              );
+            }, 2000);
+          });
+        }
+
+        // 2. Hàm tải ảnh QR chuẩn (Tối ưu cho cả máy tính & điện thoại)
+        function downloadQRImage() {
+          const imgElement = document.getElementById("qrImage");
+          const imgUrl = imgElement.src;
+
+          fetch(imgUrl)
+            .then((response) => response.blob())
+            .then((blob) => {
+              const blobUrl = URL.createObjectURL(blob);
+              const a = document.createElement("a");
+              a.href = blobUrl;
+              a.download = "QR_MungCuoi_NguyenTanTai.jpg";
+              document.body.appendChild(a);
+              a.click();
+              document.body.removeChild(a);
+              URL.revokeObjectURL(blobUrl);
+              showToast("Đã tải ảnh QR mừng cưới về máy!");
+            })
+            .catch(() => {
+              // Dự phòng nếu bị chặn CORS: Mở ảnh tab mới để người dùng tự nhấn giữ lưu
+              window.open(imgUrl, "_blank");
+            });
+        }
+      </script>
       <!-- FOOTER -->
       <footer
         class="p-6 bg-weddingRed-950 text-white text-center border-t-2 border-gold-400 mt-4"
